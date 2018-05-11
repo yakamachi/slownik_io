@@ -1,0 +1,14 @@
+{
+  "name": "io_slownik",
+  "version": "1.0.0",
+  "description": "Aplikacja slownikowa polsko-angielski",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Karol Mitek",
+  "license": "MIT",
+  "dependencies": {
+    "electron": "^2.0.0"
+  }
+}
