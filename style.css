@@ -66,14 +66,18 @@ ol a {
 	color:#09C;
 }
 #container{
-	width: 100%;
-	height: 922px;
+	width: 1090px;
+	height: 720px;
 	border-style: solid;
 	border-width: 1px;
 }
+#bar{
+	width: 1090px;
+	height: 50px;
+}
 #list{
-	width: 200px;
-	height: 900px;
+	width: 138px;
+	height: 649px;
 	float: left;
 	overflow-y: scroll;
 	border-style: solid;
@@ -81,13 +85,33 @@ ol a {
 	padding: 10px;
 }
 #window{
-	width: 80%;
-	height: 900px;
+	width: 872px;
+	height: 649px;
 	float: left;
 	overflow-y: scroll;
 	border-style: solid;
 	border-width: 1px;
 	padding: 10px;
+}
+#word{
+	width: 100%;
+	height: 10%;
+	font-size: 50px;
+}
+#definition{
+	width: 50%;
+	font-size: 22px;
+	float: left;
+}
+#picture{
+	width: 50%;
+	height: 50%;
+	float: left;
+}
+#related{
+	width: 100%;
+	height: 50%;
+	font-size: 18px;
 }
 #alphabet{
 	width: 30px;
@@ -95,4 +119,9 @@ ol a {
 	border-style: solid;
 	border-width: 1px;
 	padding: 2px;
+}
+.przycisk{
+	position: absolute;
+	width: 75px;
+	height: 50px;
 }
