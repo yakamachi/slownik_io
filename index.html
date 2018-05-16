@@ -1,161 +1,234 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Słownik</title>
-		<meta charset='utf-8' />
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" type="text/css" href="style.css">
-		
-		<script>
-			function myFunction() {
-			  // Declare variables 
-			  var input, filter, table, tr, td, i;
-			  input = document.getElementById("myInput");
-			  filter = input.value.toUpperCase();
-			  table = document.getElementById("demo");
-			  tr = table.getElementsByTagName("tr");
 
-			  // Loop through all table rows, and hide those who don't match the search query
-			  for (i = 0; i < tr.length; i++) {
+<head>
+	<title>Słownik</title>
+	<meta charset='utf-8' />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="style.css">
+
+	<script>
+		function myFunction() {
+			// Declare variables 
+			var input, filter, table, tr, td, i;
+			input = document.getElementById("myInput");
+			filter = input.value.toUpperCase();
+			table = document.getElementById("demo");
+			tr = table.getElementsByTagName("tr");
+
+			// Loop through all table rows, and hide those who don't match the search query
+			for (i = 0; i < tr.length; i++) {
 				td = tr[i].getElementsByTagName("td")[0];
 				if (td) {
-				  if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-					tr[i].style.display = "";
-				  } else {
-					tr[i].style.display = "none";
-				  }
-				} 
-			  }
+					if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+						tr[i].style.display = "";
+					} else {
+						tr[i].style.display = "none";
+					}
+				}
 			}
-		</script>
-		
-	</head>
-	
-	<body>
-		<div id="container">
-			<div id="bar">
-				<button class="przycisk">Poprzedni</button>
-				<button class="przycisk" style="margin-left: 80px;">Następny</button>
-				<button class="przycisk" style="margin-left: 160px;">Strona Główna</button>
-				<button class="przycisk" style="margin-left: 240px;">Wymowa</button>
-				<button class="przycisk" style="margin-left: 320px;">O Języku</button>
-			</div>
-			<div id="list">
-				<ol>
-					<li style="width: 120px;"><a href="#">dział - 1</a>
-						<ul>
-							<li><a href="#">link - 1</a></li>
-							<li><a href="#">link - 2</a></li>
-							<li><a href="#">link - 3</a></li>
-							<li><a href="#">link - 4</a></li>
-							<li><a href="#">link - 5</a></li>
-						</ul>
-					</li>
-				</ol>
-				<p><input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name"></p>
-				
-				
-		
-				<table id="demo"></table>
+		}
+	</script>
+
+</head>
+
+<body>
+	<div id="container">
+		<div id="bar">
+			<button id="prev" onclick="prevClick()" class="przycisk" disabled>Poprzedni</button>
+			<button id="next" onclick="nextClick()" class="przycisk" style="margin-left: 80px;" disabled>Następny</button>
+			<button class="przycisk" style="margin-left: 160px;">Strona Główna</button>
+			<button class="przycisk" style="margin-left: 240px;">Wymowa</button>
+			<button class="przycisk" style="margin-left: 320px;">O Języku</button>
+		</div>
+		<div id="list">
+			<ol>
+				<li style="width: 120px;">
+					<a href="#">dział - 1</a>
+					<ul>
+						<li>
+							<a href="#">link - 1</a>
+						</li>
+						<li>
+							<a href="#">link - 2</a>
+						</li>
+						<li>
+							<a href="#">link - 3</a>
+						</li>
+						<li>
+							<a href="#">link - 4</a>
+						</li>
+						<li>
+							<a href="#">link - 5</a>
+						</li>
+					</ul>
+				</li>
+			</ol>
+			<p>
+				<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+			</p>
+
+
+
+			<table id="demo"></table>
 
 			<script>
-				var x,xmlhttp,xmlDoc
+				var x, xmlhttp, xmlDoc
 				xmlhttp = new XMLHttpRequest();
 				xmlhttp.open("GET", "sample.xml", false);
 				xmlhttp.send();
-				xmlDoc = xmlhttp.responseXML; 
+				xmlDoc = xmlhttp.responseXML;
 				x = xmlDoc.getElementsByTagName("entry");
-				table="<tr><th></th></tr>";
-				for (i = 0; i <x.length; i++) { 
-				  table += "<tr onclick='displayCD(" + i + ")'><td>";
-				  table += x[i].getElementsByTagName("id")[0].childNodes[0].nodeValue;
-				  table += "</td><td>";
+				table = "<tr><th></th></tr>";
+				for (i = 0; i < x.length; i++) {
+					table += "<tr onclick='displayCD(" + i + ")'><td>";
+					table += x[i].getElementsByTagName("id")[0].childNodes[0].nodeValue;
+					table += "</td><td>";
 				}
 				document.getElementById("demo").innerHTML = table;
 
-				function displayCD(i) {
-								document.getElementById("slowo").innerHTML =
-                                "Word: " +
-                                x[i].getElementsByTagName("id")[0].childNodes[0].nodeValue;
-								
-                                document.getElementById("pfs").innerHTML =
-                                "Pfs: " +
-                                x[i].getElementsByTagName("pfs")[0].childNodes[0].nodeValue;
-								
-								document.getElementById("slowo2").innerHTML =
-                                "*: " +
-                                x[i].getElementsByTagName("word")[0].childNodes[0].nodeValue;
-                                
-                                relative = x[i].getElementsByTagName("synomym")[0].childNodes[0].nodeValue;
+				var cnt = -1;
+				var lista = [];
+				var zmiana = false;
 
-                                document.getElementById("related").innerHTML =
-								"<p id='sentence'></p><p id='sentence2'></p>"+
-                                "<p id='synomym' onclick='displayCD("+findRelative(relative)+")'>"+relative+"</p>"
-                                
-
-                                document.getElementById("def").innerHTML =
-                                "Def: " +
-                                x[i].getElementsByTagName("def")[0].childNodes[0].nodeValue;
-
-                                document.getElementById("sentence").innerHTML =
-                                "Sentence: " +
-                                x[i].getElementsByTagName("sentence")[1].childNodes[0].nodeValue;
-								
-								document.getElementById("sentence2").innerHTML =
-                                "Sentence: " +
-                                x[i].getElementsByTagName("sentence")[0].childNodes[0].nodeValue;
-
-
-
+				function prevClick() {
+					prevClick.called = true;
+					displayCD(lista[cnt - 1]);
+					cnt--;
+					nextPrevButtons();
+					prevClick.called = false;
+					console.log(cnt);
 				}
 
-                function findRelative(name){
-						var i = 0;
-						for(i;i<x.length;i++){
-							if(x[i].getElementsByTagName("id")[0].childNodes[0].nodeValue==name){
-								break;
-							}
-						}
-						if(i === x.length){
-							i = -1;
-						}
-						console.log(i);
-						return i;
+				function nextClick() {
+					nextClick.called = true;
+					displayCD(lista[cnt + 1])
+					cnt++;
+					nextPrevButtons();
+					nextClick.called = false;
+					console.log(cnt);
+				}
+
+				function nextPrevButtons() {
+					if (lista.length > 1 && cnt > 0) {
+						document.getElementById('prev').disabled = false;
 					}
+					if (lista.length > 1 && cnt != lista.length - 1) {
+						document.getElementById('next').disabled = false;
+					}
+					if (cnt < 1) {
+						document.getElementById('prev').disabled = true;
+					}
+					if (cnt >= lista.length - 1) {
+						document.getElementById('next').disabled = true;
+					}
+					if(zmiana){
+						for(z=cnt+1; z < lista.length; z++){
+							lista.pop()
+						}
+						zmiana = false;
+						document.getElementById('next').disabled = true;
+					}
+				}
+
+				function displayCD(i) {
+					if (i === -1) {
+						return;
+					}
+
+					document.getElementById("slowo").innerHTML =
+						"Word: " +
+						x[i].getElementsByTagName("id")[0].childNodes[0].nodeValue;
+
+					document.getElementById("pfs").innerHTML =
+						"Pfs: " +
+						x[i].getElementsByTagName("pfs")[0].childNodes[0].nodeValue;
+
+					document.getElementById("slowo2").innerHTML =
+						"*: " +
+						x[i].getElementsByTagName("word")[0].childNodes[0].nodeValue;
+
+					relative = x[i].getElementsByTagName("synomym")[0].childNodes[0].nodeValue;
+					if (!nextClick.called && !prevClick.called) {
+						lista[cnt+1]=i;
+						cnt++;
+						zmiana = true;
+					}
+					nextPrevButtons();
+
+
+					document.getElementById("related").innerHTML =
+						"<p id='sentence'></p><p id='sentence2'></p>" +
+						"<p id='synomym' onclick='displayCD(" + findRelative(relative) + ")'>" + relative + "</p>"
+
+
+					document.getElementById("def").innerHTML =
+						"Def: " +
+						x[i].getElementsByTagName("def")[0].childNodes[0].nodeValue;
+
+					document.getElementById("sentence").innerHTML =
+						"Sentence: " +
+						x[i].getElementsByTagName("sentence")[1].childNodes[0].nodeValue;
+
+					document.getElementById("sentence2").innerHTML =
+						"Sentence: " +
+						x[i].getElementsByTagName("sentence")[0].childNodes[0].nodeValue;
+
+
+					
+					console.log("i="+i);
+					console.log("Count:="+cnt)
+				}
+
+				function findRelative(name) {
+					var i = 0;
+					for (i; i < x.length; i++) {
+						if (x[i].getElementsByTagName("id")[0].childNodes[0].nodeValue == name) {
+							break;
+						}
+					}
+					if (i === x.length) {
+						i = -1;
+					}
+					return i;
+				}
 			</script>
-				
-				
-			</div>
-			<div id="window">
-				<div id="word">
+
+
+		</div>
+		<div id="window">
+			<div id="word">
 				<p id='slowo'></p>
-				</div>
-				<div id="word">
+			</div>
+			<div id="word">
 				<p id='pfs'></p>
 				<p id='slowo2'></p>
-				</div>
-				<div id="definition">
-				</div>
-				<div id="picture">
+			</div>
+			<div id="definition">
+			</div>
+			<div id="picture">
 				<p id='def'></p>
-				</div>
-				<div id="related">
+			</div>
+			<div id="related">
 				<p id='sentence'></p>
 				<p id='sentence2'></p>
-				</div>
-			</div>
-
-			<div id="alphabet">
-                        <script>
-			function alercik(literka){
-				alert(literka);
-			}
-
-			for(i = 0; i < 26; i++)
-				document.getElementById("alphabet").innerHTML += '<input type="button" style="width: 30px; height: 25.5px;" value="' + String.fromCharCode(65+i) + '" onClick="alercik(this.value)"/><br/>';
-		        </script>
-				
 			</div>
 		</div>
-	</body>
-</html>		
+		<div id="alphabet">
+			<button style="width: 30px;">A</button>
+		</div>
+
+
+		<script>
+			function alercik(literka) {
+				alert(literka);
+			}
+			if (document.readystate === 'complete') {
+				for (i = 0; i < 26; i++)
+					document.getElementById("alphabet").innerHTML += '<button style="width: 30px; height: 25.5px;" value="' + String.fromCharCode(65 + i) + '" onClick="alercik(this.value)"/><br/>';
+			};
+		</script>
+	</div>
+</body>
+
+</html>
