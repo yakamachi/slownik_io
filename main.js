@@ -9,12 +9,12 @@ let mainWindow;
 app.on('ready', function(){
     //Stwórz okno
     mainWindow = new BrowserWindow({
-        width: 1124,
+        width: 1120,
         height: 796,
         maxHeight: 796,
         minHeight: 796,
-        maxWidth: 1124,
-        minWidth: 1124,
+        maxWidth: 1120,
+        minWidth: 1120,
         show: false
     });
     mainWindow.loadURL(url.format({
@@ -42,13 +42,7 @@ app.on('ready', function(){
 const mainMenuTemp = [
     {
         label: 'File',
-        submenu:[
-            {
-                label: 'Previous'
-            },
-            {
-                label: 'Next',
-            },            
+        submenu:[          
             {
                 label: 'Exit',
                 accelerator: process.platform == 'darwin' ? 'Command+Q' : 'Ctrl+Q',
