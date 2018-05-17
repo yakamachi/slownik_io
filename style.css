@@ -2,25 +2,26 @@ ol {
 	list-style-type:none;
 	padding:0;
 	margin:0;
-	background-color:#FFF;
-	font-size:18px;
+	width:200px;
+	background-color:#FFFFFF;
+	font-size:17px;
 	height:2em;
 	line-height:2em;
 	text-align:center;
+
 }
 
 ol a {
 	display:block;
 	text-decoration:none;
-	color:#000;
+	color:#000000;
 	padding:0 5px;
 }
 
   ol > li {
 	float:left;
-	width:150px;
-	margin-left:1px;
-	background-color:#FDD700;
+	width:200px;
+	background-color:#FFFFFF;
 	height:2em;
   }
 
@@ -30,15 +31,18 @@ ol a {
 
 
   ol > li:hover {
-	background-color:#EEE;
+	background-color:#FFFFFF;
+	width:200px;
   }
 
   ol > li:hover > a {
-	color:#09C;
+	color: #000000;
+	background-color: #aacfe2;
   }
 
   ol > li:hover > ul {
 	display:block;
+	background-color: #b5ddf2;
   }
 
   ol > li > ul {
@@ -50,7 +54,7 @@ ol a {
 
   ol > li > ul > li {
 	position:relative;
-	background-color:#EEE;
+	background-color:#b5ddf2;
   }
 
   ol > li > ul > li > a {
@@ -63,7 +67,8 @@ ol a {
 
 
   ol > li > ul > li:hover > a {
-	color:#09C;
+	color:#000000;
+	background-color: #aacfe2;
 }
 #container{
 	width: 1090px;
@@ -82,7 +87,6 @@ ol a {
 	overflow-y: scroll;
 	border-style: solid;
 	border-width: 1px;
-	padding: 10px;
 }
 #window{
 	width: 872px;
@@ -120,8 +124,17 @@ ol a {
 	border-width: 1px;
 	padding: 2px;
 }
+#myInput{
+	margin-left: 0px;
+}
 .przycisk{
+	background-color: #FFFFFF;
+	border: none;
 	position: absolute;
 	width: 75px;
 	height: 50px;
+}
+.przycisk:hover
+{
+	background-color: #b5ddf2;
 }

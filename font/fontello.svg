@@ -1,0 +1,20 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg">
+<metadata>Copyright (C) 2018 by original authors @ fontello.com</metadata>
+<defs>
+<font id="fontello" horiz-adv-x="1000" >
+<font-face font-family="fontello" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
+<missing-glyph horiz-adv-x="1000" />
+<glyph glyph-name="forward" unicode="&#xe800;" d="M1000 493q0-15-11-25l-285-286q-11-11-25-11t-25 11-11 25v143h-125q-55 0-98-3t-86-12-74-24-59-39-45-56-27-77-10-101q0-31 3-69 0-4 2-13t1-15q0-8-5-14t-13-6q-9 0-15 10-4 5-8 12t-7 17-6 13q-71 159-71 252 0 111 30 186 90 225 488 225h125v143q0 14 11 25t25 10 25-10l285-286q11-11 11-25z" horiz-adv-x="1000" />
+
+<glyph glyph-name="home-outline" unicode="&#xe801;" d="M1108 422q38-30 38-80 0-42-30-73t-75-31l-51 0 0-312q0-44-31-75t-74-30l-625 0q-42 0-73 30t-31 75l0 312-52 0q-44 0-74 31t-30 73q0 46 36 79 79 66 204 174t211 181 88 75l34 29 35-29q1-1 86-75t211-181 203-173z m-430-496l0 260-209 0 0-260 209 0z m207 416l156 0q-231 194-468 400-238-206-469-400l156 0 0-416 156 0 0 312 313 0 0-312 156 0 0 416z" horiz-adv-x="1146" />
+
+<glyph glyph-name="volume-up" unicode="&#xe802;" d="M460 727l0-754-234 234-226 0 0 286 226 0z m133-602l-65 63c45 45 68 108 68 168 0 59-21 115-63 159l61 61c61-63 97-144 97-228 0-76-30-156-98-223z m145-131l-70 69c77 77 116 182 116 288 0 105-39 211-116 289l66 66c97-98 151-229 151-361 0-124-46-249-147-351z" horiz-adv-x="885" />
+
+<glyph glyph-name="reply" unicode="&#xf112;" d="M1000 225q0-93-71-252-1-4-6-13t-7-17-7-12q-7-10-16-10-8 0-13 6t-5 14q0 5 1 15t2 13q3 38 3 69 0 56-10 101t-27 77-45 56-59 39-74 24-86 12-98 3h-125v-143q0-14-10-25t-26-11-25 11l-285 286q-11 10-11 25t11 25l285 286q11 10 25 10t26-10 10-25v-143h125q398 0 488-225 30-75 30-186z" horiz-adv-x="1000" />
+
+<glyph glyph-name="info" unicode="&#xf129;" d="M357 100v-71q0-15-10-25t-26-11h-285q-15 0-25 11t-11 25v71q0 15 11 25t25 11h35v214h-35q-15 0-25 11t-11 25v71q0 15 11 25t25 11h214q15 0 25-11t11-25v-321h35q15 0 26-11t10-25z m-71 643v-107q0-15-11-25t-25-11h-143q-14 0-25 11t-11 25v107q0 14 11 25t25 11h143q15 0 25-11t11-25z" horiz-adv-x="357.1" />
+</font>
+</defs>
+</svg>
