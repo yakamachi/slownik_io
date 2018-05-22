@@ -1,12 +1,12 @@
 const electron = require('electron');
 const path = require('path');
 const url = require('url');
-const {app, BrowserWindow, Menu} = electron;
+const { app, BrowserWindow, Menu, ipcMain, shell } = electron;
 
 let mainWindow;
 
 //Nasłuchuj gotowość aplikcji
-app.on('ready', function(){
+app.on('ready', function () {
     //Stwórz okno
     mainWindow = new BrowserWindow({
         width: 1120,
@@ -24,50 +24,68 @@ app.on('ready', function(){
     }));
     mainWindow.once('ready-to-show', () => {
         mainWindow.show()
-      })
+    })
 
 
 
     //Fix błędu na MacOS
-    if(process.platform == 'darwin'){
+    if (process.platform == 'darwin') {
         mainMenuTemp.unshift({});
     }
 
     //Buduj menu ze wzoru
     const mainMenu = Menu.buildFromTemplate(mainMenuTemp);
     Menu.setApplicationMenu(mainMenu);
+
+    //Wyślij miejsce w którym jest xml
+    //loadExternalXML();
 })
 
 //Wzór menu
 const mainMenuTemp = [
     {
         label: 'File',
-        submenu:[          
+        submenu: [
             {
                 label: 'Exit',
                 accelerator: process.platform == 'darwin' ? 'Command+Q' : 'Ctrl+Q',
-                click(){
+                click() {
                     app.quit();
                 }
-            }
+            },
+            {
+                label: 'Print',
+                click() {
+                    let contents = mainWindow.webContents;
+                    contents.print({silent:false, printBackground:true});
+
+                }
+            }            
         ]
     }
 ]
 
 //Dodaj narzędzia dev jesli nie w produkcji
-if(process.env.NODE_env !== 'production'){
+if (process.env.NODE_env !== 'production') {
     mainMenuTemp.push({
         label: 'Dev Tools',
-        submenu:[{
+        submenu: [{
             label: 'Pokaż narzędzia',
             accelerator: process.platform == 'darwin' ? 'Command+I' : 'Ctrl+I',
-            click(item, focusedWindow){
+            click(item, focusedWindow) {
                 focusedWindow.toggleDevTools();
             }
-            },
-            {
-                role: 'Reload'
-            }
+        },
+        {
+            role: 'Reload'
+        }
         ]
     })
 }
+
+
+var fileurl = url.format({
+    pathname: path.join(__dirname, 'resources/example.xml'),
+    protocol: 'file:',
+    slashes: true
+})
