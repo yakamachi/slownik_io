@@ -4,6 +4,31 @@ const url = require('url');
 const { app, BrowserWindow, Menu, ipcMain, shell } = electron;
 
 let mainWindow;
+let lnWindow;
+
+ipcMain.on('ojezyku', function(){
+    createLanguageNotewindow();
+})
+
+function createLanguageNotewindow() {
+    lnWindow = new BrowserWindow({
+    });
+
+    lnWindow.loadURL(url.format({
+        pathname: path.join(__dirname, 'OJezyku.html'),
+        protocol: 'file:',
+        slashes: true
+    }))
+
+    lnWindow.on('close', function () {
+        lnWindow = null;
+    })
+
+    //const menu = Menu.buildFromTemplate(addMenuTemp);
+    //Menu.setApplicationMenu(lnWindow);
+
+}
+
 
 //Nasłuchuj gotowość aplikcji
 app.on('ready', function () {
@@ -42,6 +67,7 @@ app.on('ready', function () {
 })
 
 //Wzór menu
+const addMenuTemp = [];
 const mainMenuTemp = [
     {
         label: 'File',
@@ -57,10 +83,16 @@ const mainMenuTemp = [
                 label: 'Print',
                 click() {
                     let contents = mainWindow.webContents;
-                    contents.print({silent:false, printBackground:true});
+                    contents.print({ silent: false, printBackground: true });
 
                 }
-            }            
+            },
+            {
+                label: 'Notka o języku',
+                click() {
+                    createLanguageNotewindow();
+                }
+            }
         ]
     }
 ]

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Słownik</title>
+	<meta charset='utf-8' />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="css/fontello.css">
+	<script src="allfun.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+
+	</div>
+
+	<div id="container">
+		<div id="bar">
+			<button id="prev" onclick="prevClick()" class="przycisk" disabled>
+				<i class="demo-icon icon-reply"></i>
+				<br>Poprzedni</button>
+			<button id="next" onclick="nextClick()" class="przycisk" style="margin-left: 80px;" disabled>
+				<i class="demo-icon icon-forward"></i>
+				<br>Następny</button>
+			<button class="przycisk" style="margin-left: 160px; width:100px">
+				<i class="demo-icon icon-home-outline"></i>
+				<br>
+				<nobr>Strona Główna</nobr>
+			</button>
+			<button class="przycisk" style="margin-left: 260px;">
+				<i class="demo-icon icon-volume-up"></i>
+				<br>Wymowa</button>
+			<button id="ojezyku" class="przycisk" style="margin-left: 340px;">
+				<i class="demo-icon icon-info"></i>
+				<br>O Języku</button>
+		</div>
+		<script>
+			nextPrevButtons();
+		</script>
+		<div id="list">
+			<ol>
+				<li style="width: 200px; text-align: left">
+					<a href="#" id="pressed">English</a>
+					<ul>
+						<li>
+							<a href="#" onClick="displayListEN(1)" id="primary">English</a>
+						</li>
+						<li>
+							<a href="#" onClick="displayListPL(1)" id="secondary">.</a>
+						</li>
+					</ul>
+				</li>
+			</ol>
+			<p>
+				<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search..." title="Type in a name">
+			</p>
+
+			<table id="demo" align="left"></table>
+
+		</div>
+		<div id="window">
+			<div id="wordMain">
+				<p id='slowo'></p>
+			</div>
+			<div id="word">
+				<p id='pfs'></p>
+				<p id='slowo2'></p>
+			</div>
+			<div id="definition">
+			</div>
+			<div id="picture">				
+				<p id='def'></p>
+			</div>
+			<div id="related">
+				<p id='sentence'></p>
+				<p id='sentence2'></p>
+			</div>
+		</div>
+
+		<div id="alphabet">
+			<script>
+				function alercik(literka) {
+					document.getElementById('myInput').value = literka;
+					FirstLetterOnly();
+				}
+
+				const hgh = (662/26);
+
+				for (i = 0; i < 26; i++)
+					document.getElementById("alphabet").innerHTML += '<input type="button" class="literken" style="width: 30px; height: '+hgh+'px;" value="' + String.fromCharCode(65 + i) + '" onClick="alercik(this.value)"/><br/>';
+				
+				//sortMyList();
+			</script>
+
+		</div>
+	</div>
+
+</body>
+
+</html>

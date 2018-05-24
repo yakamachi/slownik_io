@@ -1,3 +1,6 @@
+const electron = require('electron');
+const { ipcRenderer } = electron;
+
 function myFunction() {
     // Declare variables
     var input, filter, table, tr, td, i;
@@ -39,13 +42,13 @@ function FirstLetterOnly() {
         }
     }
 }
-    //var link;
-    //const url = require('url');
+//var link;
+//const url = require('url');
 
 
 var x;
 //start program, create a list of available words from 
-window.onload = function (){  
+window.onload = function () {
     /*var where = __dirname;
     var path = where.substr(0, where.length - 9);
     console.log(path);
@@ -70,6 +73,16 @@ window.onload = function (){
     document.getElementById("demo").innerHTML = table;
 
     sortMyList();
+
+
+
+    const ojezykubutton = document.getElementById("ojezyku");
+    ojezykubutton.addEventListener('click', OpenOJezyku);
+
+    function OpenOJezyku(e) {
+        e.preventDefault();
+        ipcRenderer.send('ojezyku', true);
+    }
 };
 
 //window.onload = LoadProgram();
@@ -111,6 +124,8 @@ function displayListPL() {
     document.getElementById("demo").innerHTML = table;
 
     sortMyList();
+
+    document.getElementById('myInput').value = "";
 }
 
 //wyswietl liste primary language
@@ -131,6 +146,8 @@ function displayListEN() {
     document.getElementById("demo").innerHTML = table;
 
     sortMyList();
+
+    document.getElementById('myInput').value = "";
 }
 
 //listy popedni następny
@@ -215,21 +232,21 @@ function findRelative(name) {
     return i;
 }
 
-function sortMyList(){
+function sortMyList() {
     var table = document.getElementById("demo");
     //console.log(table);
     var tr = table.getElementsByTagName("TR");
     trl = tr.length;
-    do{
-        for(i = 1; i < trl-1; i++){
+    do {
+        for (i = 1; i < trl - 1; i++) {
             var td = tr[i].getElementsByTagName("TD")[0].innerHTML;
             //console.log(td);
-            var tdn = tr[i+1].getElementsByTagName("TD")[0].innerHTML;
+            var tdn = tr[i + 1].getElementsByTagName("TD")[0].innerHTML;
             //console.log(tdn);
-            if(td.localeCompare(tdn) == 1){
-                tr[i].parentNode.insertBefore(tr[i+1],tr[i]);
+            if (td.localeCompare(tdn) == 1) {
+                tr[i].parentNode.insertBefore(tr[i + 1], tr[i]);
             }
         }
         trl--;
-    }while(trl > 1)
+    } while (trl > 1)
 }

@@ -1,0 +1,247 @@
+ol {
+	list-style-type:none;
+	padding:0;
+	margin:0;
+	width:200px;
+	background-color:#FFFFFF;
+	font-size:15px;
+	height:2em;
+	line-height:2em;
+	text-align:center;
+
+}
+
+ol a {
+	display:block;
+	text-decoration:none;
+	color:#000000;
+	padding:0 0px;
+	font-size:23px;
+}
+
+  ol > li {
+	float:left;
+	width:200px;
+	background-color:#FFFFFF;
+	height:2em;
+  }
+
+  ol > li:first-child {
+	margin-left:0;
+  }
+
+
+  ol > li:hover {
+	background-color:#FFFFFF;
+	width:200px;
+  }
+
+  ol > li:hover > a {
+	color: #000000;
+	background-color: #aacfe2;
+  }
+
+  ol > li:hover > ul {
+	display:block;
+	background-color: #b5ddf2;
+  }
+
+  ol > li > ul {
+	display:none;
+	list-style-type:none;
+	padding:0;
+	margin:0;
+  }
+
+  ol > li > ul > li {
+	position:relative;
+	background-color:#b5ddf2;
+  }
+
+  ol > li > ul > li > a {
+	border-top-style: dotted;
+	border-width: 3px;
+	border-color: #b5fff2;
+  }
+
+  ol > li > ul > li:hover {
+	background-color:#DDD;
+  }
+
+
+  ol > li > ul > li:hover > a {
+	color:#000000;
+	background-color: #aacfe2;
+}
+#container{
+	width: 1090px;
+	height: 720px;
+	border-style: solid;
+	border-width: 1px;
+}
+#bar{
+	width: 1090px;
+	height: 50px;
+}
+#list{
+	width: 145px;
+	height: 669px;
+	float: left;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	border-style: solid;
+	border-width: 1px;
+}
+#window{
+	width: 884px;
+	height: 649px;
+	float: left;
+	overflow-y: scroll;
+	border-style: solid;
+	border-width: 1px;
+	padding: 10px;
+}
+#wordMain{
+	width: 100%;
+	height: 10%;
+	font-size: 50px;
+	font-family: verdana;
+}
+#word{
+	width: 100%;
+	height: 10%;
+	font-size: 50px;
+	
+}
+#definition{
+	width: 50%;
+	font-size: 25px;
+	float: left;
+	
+}
+#related{
+	width: 100%;
+	padding-top: 200px; 
+	font-size: 18px;
+}
+#pfs {
+	margin-left: 10px;
+	font-style: italic;
+}
+#def {
+	margin-left: 10px;
+}
+#picture{
+	width: 50%;
+	height: 50%;
+	float: right;
+}
+
+#alphabet{
+	width: 30px;
+	height: 663px;
+	float: left;
+	border-style: solid;
+	border-width: 1px;
+	padding: 2px;
+}
+#myInput{
+	margin-left: 0px;
+	width: 128px;
+	height: 30px;
+	box-sizing: border-box;
+	  padding-left: 25px; 
+    border: 2px solid #ccc;
+    border-radius: 4px;  
+    background-color: white;
+    background-image: url('searchicon.png');
+    background-repeat: no-repeat;
+}
+a{
+	margin-left: 0px;
+	width: 128px;
+	text-align: center;
+}
+
+#def {
+	font-size: 27px;
+}
+#slowo {
+	padding-left: 260px
+}
+#definition {
+	
+}
+#sentence {
+	width: 50%;
+	margin-left: 10px;
+}
+#sentence2 {
+	width: 50%;
+	margin-left: 10px;
+}
+
+#slowo2 {
+	font-size: 27px;
+	padding-top: 20px;
+	margin-left: 10px;
+}
+#synomym {
+	width: 50%;
+	margin-left: 10px;
+}
+span:hover {
+	padding: 1px;
+	text-align: center;
+	background-color: #b5ddf2;
+	cursor: pointer;
+}
+.przycisk{
+	background-color: #FFFFFF;
+	border: none;
+	position: absolute;
+	width: 75px;
+	height: 50px;
+}
+.przycisk:hover
+{
+	background-color: #b5ddf2;
+}
+.letterButton {
+	width: 30px;
+	height: 25.5px;
+	background-color: #FFFFFF;
+	border-radius: 2px;
+	border: 1px;
+	border-color: #b5ddf2;
+	border-style: solid none;
+	font-family: verdana;
+	font-style: oblique;
+}
+.letterButton:hover {
+	background-color: #b5ddf2;
+}
+
+
+#demo {
+	text-align: left;
+	font-size: 20px;
+	font-family: verdana;
+	width: 125px;
+}
+a {
+	font-family: verdana;
+	font-size: 14px;
+	cursor: pointer;
+}
+td {
+	  width: 120px;
+    border-bottom: solid 1px #000;
+    border-radius: 3px;
+}
+tr {
+    cursor: pointer;
+}
+tr:hover td {
+	background-color: #b5ddf2;
+}
