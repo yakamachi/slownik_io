@@ -1,3 +1,4 @@
+//załadowanie funkcjonalnosci electrona
 const electron = require('electron');
 const path = require('path');
 const url = require('url');
@@ -6,10 +7,16 @@ const { app, BrowserWindow, Menu, ipcMain, shell } = electron;
 let mainWindow;
 let lnWindow;
 
-ipcMain.on('ojezyku', function(){
+//otwarcie okna o jezyku po uzyskaniu odpowiedniej wiadomosci ze strony
+ipcMain.on('ojezyku', function () {
     createLanguageNotewindow();
 })
 
+ipcMain.on('wymowa', function () {
+
+})
+
+//utwórz okno o języku
 function createLanguageNotewindow() {
     lnWindow = new BrowserWindow({
     });
@@ -34,12 +41,14 @@ function createLanguageNotewindow() {
 app.on('ready', function () {
     //Stwórz okno
     mainWindow = new BrowserWindow({
+        maximizable: false,
+        resizable: false,
         width: 1120,
         height: 796,
-        maxHeight: 796,
+        /*maxHeight: 796,
         minHeight: 796,
         maxWidth: 1120,
-        minWidth: 1120,
+        minWidth: 1120,*/
         show: false
     });
     mainWindow.loadURL(url.format({
@@ -51,6 +60,13 @@ app.on('ready', function () {
         mainWindow.show()
     })
 
+
+
+    mainWindow.on('closed', function () {
+        mainWindow = null;
+        lnWindow = null;
+        app.quit();
+    })
 
 
     //Fix błędu na MacOS
@@ -115,7 +131,7 @@ if (process.env.NODE_env !== 'production') {
     })
 }
 
-
+//zmienna pomocnicza - obecnie nie wykorzystana
 var fileurl = url.format({
     pathname: path.join(__dirname, 'resources/example.xml'),
     protocol: 'file:',
