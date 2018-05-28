@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
-<dictionary xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" lang="pl-eng">
+<dictionary 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema" lang="pl-eng">
   <language>
     <full-name>Polish</full-name>
     <about>Krótka notka o języku</about>
-    <alphabet>
-			AĄBCĆDEĘFGHIJKLŁMNŃOÓPRSŚTUWYZŹŻ
-		</alphabet>
+    <alphabet>AĄBCĆDEĘFGHIJKLŁMNŃOÓPRSŚTUWYZŹŻ</alphabet>
     <category>
       <animals>Zwierzęta</animals>
       <fruits>Owoce</fruits>
@@ -27,8 +27,8 @@
       <synomym>common</synomym>
       <def>Tutaj definicja sobie jest</def>
       <sentence>He frequents this club, he's here almost every weekend.</sentence>
-      <sound />
-      <img />
+      <sound></sound>
+      <img></img>
     </entry>
     <entry>
       <id>common</id>
@@ -42,8 +42,8 @@
       <synomym>frequent</synomym>
       <def>Tutaj definicja sobie jest</def>
       <sentence>It's a common belief.</sentence>
-      <sound />
-      <img />
+      <sound></sound>
+      <img></img>
     </entry>
     <entry>
       <id>shop</id>
@@ -57,8 +57,8 @@
       <synomym>boutique</synomym>
       <def>Tutaj definicja sobie jest</def>
       <sentence>She went out to the shop.</sentence>
-      <sound />
-      <img />
+      <sound></sound>
+      <img></img>
     </entry>
     <entry>
       <id>boutique</id>
@@ -72,8 +72,8 @@
       <synomym>shop</synomym>
       <def>Tutaj definicja sobie jest</def>
       <sentence>Dad is opening a boutique in London.</sentence>
-      <sound />
-      <img />
+      <sound>resources/p.ogg</sound>
+      <img>resources/kotek.jpg</img>
     </entry>
     <entry>
       <id>banana</id>
@@ -87,8 +87,8 @@
       <synomym>-</synomym>
       <def>Tutaj definicja sobie jest</def>
       <sentence>Mitek makes good banana shakes.</sentence>
-      <sound />
-      <img />
+      <sound></sound>
+      <img></img>
     </entry>
   </entries>
 </dictionary>

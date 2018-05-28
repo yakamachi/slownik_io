@@ -1,12 +1,32 @@
-const electron = require('electron');
-const { ipcRenderer } = electron;
+const electron = require('electron');//załadowanie funkcji electrona
+const { ipcRenderer } = electron;//możliwosć wysyłania komunikatów między aplikacją electrona a stroną
 
-function myFunction() {
+var type = 1; //sortowanie rosnące, do zmiany
+var next, prev, hpage, sound, alang;//elementy menu, aby dynamicznie zmieniać ich wartość
+var picpath = ""; //ścieżka do obrazka
+var soundpath = ""; //ścieżka do dźwięku
+//oczekuj na zmianę języka menu
+ipcRenderer.on('lang', (event, arg) => {
+    console.log(arg);
+    next = arg.next;
+    prev = arg.prev;
+    hpage = arg.hpage;ćś
+    sound = arg.sound;
+    alang = arg.linfo;
+    document.getElementById('next').innerHTML = '<i class="demo-icon icon-forward"></i><br/>' + next; //żeby były obrazki
+    document.getElementById('prev').innerHTML = '<i class="demo-icon icon-reply"></i><br/>' + prev;
+    document.getElementById('hpage').innerHTML = '<i class="demo-icon icon-home-outline"></i><br><nobr>' + hpage + '<nobr/>';
+    document.getElementById('wymowa').innerHTML = '<i class="demo-icon icon-volume-up"></i><br><nobr>' + sound + '<nobr/>';
+    document.getElementById('ojezyku').innerHTML = '<i class="demo-icon icon-info"></i><br><nobr>' + alang + '<nobr/>';
+})
+
+function myFunction() { //filtrowanie rekordów w liście
     // Declare variables
-    var input, filter, table, tr, td, i;
-    input = document.getElementById("myInput");
+    var input, filter, table, tr, td, i; //input - tekst wejściowy,
+    //filter - zamiana znaków na duże znaki, table - lista słów, tr, td - elementy tabeli, i - licznik
+    input = document.getElementById("myInput"); //myInput - search bar
     filter = input.value.toUpperCase();
-    table = document.getElementById("demo");
+    table = document.getElementById("demo"); //tabela rekordów
     tr = table.getElementsByTagName("tr");
 
     // Loop through all table rows, and hide those who don't match the search query
@@ -22,7 +42,7 @@ function myFunction() {
     }
 }
 
-function FirstLetterOnly() {
+function FirstLetterOnly() { //funkcja jak MyFunction, ale nie wyszukiwany jest wzorzec a wyłącznie początek - do listowania rekordow na dana litere
     // Declare variables
     var input, filter, table, tr, td, i;
     input = document.getElementById("myInput");
@@ -45,7 +65,7 @@ function FirstLetterOnly() {
 //var link;
 //const url = require('url');
 
-
+//x - zaladowany xml do JS
 var x;
 //start program, create a list of available words from 
 window.onload = function () {
@@ -55,7 +75,8 @@ window.onload = function () {
     var cough = "file\\\\\\C:\\Users\\Desktop\\IO_Slownik\\sample.xml";
     console.log(cough)*/
 
-
+    //Wykorzystanie AJAX do załadowania xmla
+    ipcRenderer.send('doc-ready', true);
     var xmlhttp, xmlDoc;
     xmlhttp = new XMLHttpRequest();
     xmlhttp.open("post", 'resources/sample.xml', false);
@@ -72,25 +93,32 @@ window.onload = function () {
     }
     document.getElementById("demo").innerHTML = table;
 
-    sortMyList();
-
-
+    sortMyList(type);
 
     const ojezykubutton = document.getElementById("ojezyku");
     ojezykubutton.addEventListener('click', OpenOJezyku);
+
+    const wymowabutton = document.getElementById("wymowa");
+    wymowabutton.addEventListener('click', OpenWymowa);
 
     function OpenOJezyku(e) {
         e.preventDefault();
         ipcRenderer.send('ojezyku', true);
     }
+
+    function OpenWymowa(e) {
+        e.preventDefault();
+        document.getElementById('play').innerHTML = '<audio autoplay><src="resources/moo.wav" type="audio/wav"></audio>';
+    }
 };
 
 //window.onload = LoadProgram();
-
+// zmienne pomocnicze do obslugi listy odwiedzonych rekordow
 var cnt = -1;
 var lista = [];
 var zmiana = false;
 
+//zaladowanie poprzedniego rekordu
 function prevClick() {
     prevClick.called = true;
     displayCD(lista[cnt - 1]);
@@ -123,7 +151,7 @@ function displayListPL() {
     }
     document.getElementById("demo").innerHTML = table;
 
-    sortMyList();
+    sortMyList(type);
 
     document.getElementById('myInput').value = "";
 }
@@ -145,7 +173,7 @@ function displayListEN() {
     }
     document.getElementById("demo").innerHTML = table;
 
-    sortMyList();
+    sortMyList(type);
 
     document.getElementById('myInput').value = "";
 }
@@ -159,7 +187,7 @@ function nextClick() {
     nextClick.called = false;
     console.log(cnt);
 }
-//blokuje odblokowje
+//blokuje odblokowuje buttony poprzedni i nastepny
 function nextPrevButtons() {
     if (lista.length > 1 && cnt > 0) {
         document.getElementById('prev').disabled = false;
@@ -186,23 +214,34 @@ function displayCD(i) {
     if (i === -1) {
         return;
     }
-    document.getElementById("slowo").innerHTML =
+    document.getElementById("slowo").innerHTML = //duży napis słowo w zależności od wybranego layoutu
         "Word: " +
         x[i].getElementsByTagName("id")[0].childNodes[0].nodeValue;
-    document.getElementById("pfs").innerHTML =
+    document.getElementById("pfs").innerHTML = //pfs - cześć mowy
         "Pfs: " +
         x[i].getElementsByTagName("pfs")[0].childNodes[0].nodeValue;
-    document.getElementById("slowo2").innerHTML =
+    document.getElementById("slowo2").innerHTML = //tłumaczenie słowa
         "*: " +
         x[i].getElementsByTagName("word")[0].childNodes[0].nodeValue;
-    relative = x[i].getElementsByTagName("synomym")[0].childNodes[0].nodeValue;
-    if (!nextClick.called && !prevClick.called) {
+    relative = x[i].getElementsByTagName("synomym")[0].childNodes[0].nodeValue; //synonim, literówka
+    if (!nextClick.called && !prevClick.called) { //kontrola przycików poprzednie, następne hasło
         lista[cnt + 1] = i;
         cnt++;
         zmiana = true;
     }
     nextPrevButtons();
-    document.getElementById("related").innerHTML =
+    soundpath = "";
+    picpath = "";
+    if(x[i].getElementsByTagName("sound")[0].childNodes[0] != null){
+        console.log(x[i].getElementsByTagName("sound")[0].childNodes[0]);
+        soundpath = x[i].getElementsByTagName("sound")[0].childNodes[0].nodeValue;
+    }
+    if(x[i].getElementsByTagName("img")[0].childNodes[0] != null){
+        console.log(x[i].getElementsByTagName("img")[0].childNodes[0]);
+        picpath = x[i].getElementsByTagName("img")[0].childNodes[0].nodeValue;
+    }
+    loadimg();
+    document.getElementById("related").innerHTML = //w related znajdują sie zdania z zastosowaniem danego słowa - w języku jednym i drugim
         "<p id='sentence'></p><p id='sentence2'></p>" +
         "<p> <span id='synomym' onclick='displayCD(" + findRelative(relative) + ")'>" + relative + "</span></p>"
     document.getElementById("def").innerHTML =
@@ -232,7 +271,8 @@ function findRelative(name) {
     return i;
 }
 
-function sortMyList() {
+//sortowanie listy rekordów (A-Z)
+function sortMyList(type) {
     var table = document.getElementById("demo");
     //console.log(table);
     var tr = table.getElementsByTagName("TR");
@@ -243,10 +283,34 @@ function sortMyList() {
             //console.log(td);
             var tdn = tr[i + 1].getElementsByTagName("TD")[0].innerHTML;
             //console.log(tdn);
-            if (td.localeCompare(tdn) == 1) {
+            if (td.localeCompare(tdn) == type) {
                 tr[i].parentNode.insertBefore(tr[i + 1], tr[i]);
             }
         }
         trl--;
     } while (trl > 1)
+}
+
+function changeNamePlates() {//funkcja testowa, sprawdzanie odebrania paczki językowej z MAIN
+    ipcRenderer.on('lang', (event, arg) => {
+        console.log(arg);
+    })
+}
+
+function muzyka() { //odtwarzanie wymowy jeżeli istnieje
+    if (soundpath != "") {
+        var audio = new Audio(soundpath);
+        audio.currentTime = 0;
+        audio.play();
+    }
+}
+
+function loadimg() { //załaduj obrazek jezeli istnieje
+    if(picpath !== ""){
+        document.getElementById("picture").innerHTML = '<img style="width: 50%; heigth: 50%" src="' + picpath + '"/>';
+    }
+    else{
+        document.getElementById("picture").innerHTML = "";
+    }
+    document.getElementById("picture").innerHTML += '<p id="def"></p>';
 }

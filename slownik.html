@@ -23,12 +23,12 @@
 			<button id="next" onclick="nextClick()" class="przycisk" style="margin-left: 80px;" disabled>
 				<i class="demo-icon icon-forward"></i>
 				<br>Następny</button>
-			<button class="przycisk" style="margin-left: 160px; width:100px">
+			<button id='hpage' class="przycisk" style="margin-left: 160px; width:100px">
 				<i class="demo-icon icon-home-outline"></i>
 				<br>
 				<nobr>Strona Główna</nobr>
 			</button>
-			<button class="przycisk" style="margin-left: 260px;">
+			<button id="wymowa" class="przycisk" style="margin-left: 260px;" onclick="muzyka()">
 				<i class="demo-icon icon-volume-up"></i>
 				<br>Wymowa</button>
 			<button id="ojezyku" class="przycisk" style="margin-left: 340px;">
@@ -38,6 +38,7 @@
 		<script>
 			nextPrevButtons();
 		</script>
+		<div id='play'></div>
 		<div id="list">
 			<ol>
 				<li style="width: 200px; text-align: left">
@@ -69,7 +70,7 @@
 			</div>
 			<div id="definition"></div>
 			<div id="picture">			
-				<p id='def'></p>
+				<p id="def"></p>
 			</div>
 			<div id="related">
 				<p id='sentence'></p>
@@ -83,11 +84,18 @@
 					document.getElementById('myInput').value = literka;
 					FirstLetterOnly();
 				}
+				
+				var xmlhttp, xmlDoc
+				xmlhttp = new XMLHttpRequest();
+				xmlhttp.open("GET", "resources/sample.xml", false);
+				xmlhttp.send();
+				xmlDoc = xmlhttp.responseXML;
+				var napis = xmlDoc.getElementsByTagName("alphabet")[0].childNodes[0].nodeValue;
+				n = napis.length;
+				const hgh = (664/n);
 
-				const hgh = (662/26);
-
-				for (i = 0; i < 26; i++)
-					document.getElementById("alphabet").innerHTML += '<input type="button" class="literken" style="width: 30px; height: '+hgh+'px;" value="' + String.fromCharCode(65 + i) + '" onClick="alercik(this.value)"/><br/>';
+				for (i = 0; i < n; i++)
+					document.getElementById("alphabet").innerHTML += '<input type="button" class="literken" style="width: 30px; height: '+hgh+'px;" value="' + napis.charAt(i) + '" onClick="alercik(this.value)"/><br/>';
 				
 				//sortMyList();
 			</script>
