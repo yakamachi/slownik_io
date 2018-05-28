@@ -10,7 +10,7 @@ ipcRenderer.on('lang', (event, arg) => {
     console.log(arg);
     next = arg.next;
     prev = arg.prev;
-    hpage = arg.hpage;ćś
+    hpage = arg.hpage;
     sound = arg.sound;
     alang = arg.linfo;
     document.getElementById('next').innerHTML = '<i class="demo-icon icon-forward"></i><br/>' + next; //żeby były obrazki
@@ -303,6 +303,11 @@ function muzyka() { //odtwarzanie wymowy jeżeli istnieje
         audio.currentTime = 0;
         audio.play();
     }
+}
+
+function ustawKolejnosc(how){
+    type = how;
+    sortMyList(type);
 }
 
 function loadimg() { //załaduj obrazek jezeli istnieje
