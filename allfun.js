@@ -154,6 +154,13 @@ function displayListPL() {
     sortMyList(type);
 
     document.getElementById('myInput').value = "";
+	
+	document.getElementById("alphabet").innerHTML = "";
+	var napis = xmlDoc.getElementsByTagName("alphabet")[0].childNodes[0].nodeValue;
+	n = napis.length;
+	const hgh = (664/n);
+	for (i = 0; i < n; i++)
+	document.getElementById("alphabet").innerHTML += '<input type="button" class="literken" style="width: 30px; height: '+hgh+'px;" value="' + napis.charAt(i) + '" onClick="alercik(this.value)"/><br/>';
 }
 
 //wyswietl liste primary language
@@ -176,6 +183,10 @@ function displayListEN() {
     sortMyList(type);
 
     document.getElementById('myInput').value = "";
+	
+	document.getElementById("alphabet").innerHTML = "";
+	for(i = 0; i < 26; i++)
+	document.getElementById("alphabet").innerHTML += '<input type="button" class="literken" style="width: 30px; height: 25.5px;" value="' + String.fromCharCode(65+i) + '" onClick="alercik(this.value)"/><br/>';
 }
 
 //listy popedni następny
