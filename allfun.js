@@ -95,8 +95,9 @@ window.onload = function () {
 
 	
     sortMyList(type);
+	const hgh1 = (664/27);
     for(i = 0; i < 26; i++)
-	document.getElementById("alphabet").innerHTML += '<input type="button" class="literken" style="width: 30px; height: 25.5px;" value="' + String.fromCharCode(65+i) + '" onClick="alercik(this.value)"/><br/>';
+	document.getElementById("alphabet").innerHTML += '<input type="button" class="literken" style="width: 30px; height: '+hgh1+'px;" value="' + String.fromCharCode(65+i) + '" onClick="alercik(this.value)"/><br/>';
 	loadCategories();
 
     const ojezykubutton = document.getElementById("ojezyku");
@@ -188,9 +189,10 @@ function displayListEN() {
 
     document.getElementById('myInput').value = "";
 	
+	const hgh2 = (664/27);
 	document.getElementById("alphabet").innerHTML = "";
 	for(i = 0; i < 26; i++)
-	document.getElementById("alphabet").innerHTML += '<input type="button" class="literken" style="width: 30px; height: 25.5px;" value="' + String.fromCharCode(65+i) + '" onClick="alercik(this.value)"/><br/>';
+	document.getElementById("alphabet").innerHTML += '<input type="button" class="literken" style="width: 30px; height: '+hgh2+'px;" value="' + String.fromCharCode(65+i) + '" onClick="alercik(this.value)"/><br/>';
 }
 
 //wyświetl kategorie
