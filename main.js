@@ -28,7 +28,7 @@ var languagepack = {
         'linfo': 'O języku',
         'file': 'Plik',
         'exit': 'Wyjście',
-        'print': 'Wrukuj'
+        'print': 'Drukuj'
     },
     'english': {
         'lmenu' : 'Language...',
@@ -151,6 +151,8 @@ ipcMain.on('wymowa', function () {
 //utwórz okno o języku
 function createLanguageNotewindow() {
     lnWindow = new BrowserWindow({
+        maximizable: false,
+        resizable: false,
         show: false
     });
 

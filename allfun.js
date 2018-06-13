@@ -94,6 +94,8 @@ window.onload = function () {
     document.getElementById("demo").innerHTML = table;
 
     sortMyList(type);
+    for(i = 0; i < 26; i++)
+	document.getElementById("alphabet").innerHTML += '<input type="button" class="literken" style="width: 30px; height: 25.5px;" value="' + String.fromCharCode(65+i) + '" onClick="alercik(this.value)"/><br/>';
 
     const ojezykubutton = document.getElementById("ojezyku");
     ojezykubutton.addEventListener('click', OpenOJezyku);
