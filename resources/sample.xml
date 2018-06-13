@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<dictionary 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema" lang="pl-eng">
+  <language>
+    <full-name>Polish</full-name>
+    <about>Krótka notka o języku</about>
+    <alphabet>AĄBCĆDEĘFGHIJKLŁMNŃOÓPRSŚTUWYZŹŻ</alphabet>
+    <category>
+      <animals>Zwierzęta</animals>
+      <fruits>Owoce</fruits>
+      <vegetables>Warzywa</vegetables>
+      <sport>Sport</sport>
+      <technology>Technologia</technology>
+    </category>
+  </language>
+  <entries>
+    <entry>
+      <id>frequent</id>
+      <pfs>adj</pfs>
+      <category>Sport</category>
+      <translated>
+        <word>częsty</word>
+        <def>Tutaj definicja sobie jest</def>
+        <sentence>On często odwiedza ten klub, jest tu w prawie każdy weekend.</sentence>
+      </translated>
+      <synomym>common</synomym>
+      <def>Tutaj definicja sobie jest</def>
+      <sentence>He frequents this club, he's here almost every weekend.</sentence>
+      <sound></sound>
+      <img></img>
+    </entry>
+    <entry>
+      <id>common</id>
+      <pfs>adj</pfs>
+      <category>Sport</category>
+      <translated>
+        <word>powszechny</word>
+        <def>Tutaj definicja sobie jest</def>
+        <sentence>To jest powszechne przekonanie.</sentence>
+      </translated>
+      <synomym>frequent</synomym>
+      <def>Tutaj definicja sobie jest</def>
+      <sentence>It's a common belief.</sentence>
+      <sound></sound>
+      <img></img>
+    </entry>
+    <entry>
+      <id>shop</id>
+      <pfs>noun</pfs>
+      <category>Warzywa</category>
+      <translated>
+        <word>sklep</word>
+        <def>Tutaj definicja sobie jest</def>
+        <sentence>Ona wyszła do sklepu.</sentence>
+      </translated>
+      <synomym>boutique</synomym>
+      <def>Tutaj definicja sobie jest</def>
+      <sentence>She went out to the shop.</sentence>
+      <sound></sound>
+      <img></img>
+    </entry>
+    <entry>
+      <id>boutique</id>
+      <pfs>noun</pfs>
+      <category>Technologia</category>
+      <translated>
+        <word>butik</word>
+        <def>Tutaj definicja sobie jest</def>
+        <sentence>Tata otwiera butik w Londynie.</sentence>
+      </translated>
+      <synomym>shop</synomym>
+      <def>Tutaj definicja sobie jest</def>
+      <sentence>Dad is opening a boutique in London.</sentence>
+      <sound>resources/p.ogg</sound>
+      <img>resources/kotek.jpg</img>
+    </entry>
+    <entry>
+      <id>banana</id>
+      <pfs>noun</pfs>
+      <category>-</category>
+      <translated>
+        <word>banan</word>
+        <def>Tutaj definicja sobie jest</def>
+        <sentence>Mitek robi dobre koktajle bananowe.</sentence>
+      </translated>
+      <synomym>-</synomym>
+      <def>Tutaj definicja sobie jest</def>
+      <sentence>Mitek makes good banana shakes.</sentence>
+      <sound></sound>
+      <img></img>
+    </entry>
+  </entries>
+</dictionary>

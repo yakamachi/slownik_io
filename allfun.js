@@ -93,9 +93,11 @@ window.onload = function () {
     }
     document.getElementById("demo").innerHTML = table;
 
+	
     sortMyList(type);
     for(i = 0; i < 26; i++)
 	document.getElementById("alphabet").innerHTML += '<input type="button" class="literken" style="width: 30px; height: 25.5px;" value="' + String.fromCharCode(65+i) + '" onClick="alercik(this.value)"/><br/>';
+	loadCategories();
 
     const ojezykubutton = document.getElementById("ojezyku");
     ojezykubutton.addEventListener('click', OpenOJezyku);
@@ -112,7 +114,6 @@ window.onload = function () {
         e.preventDefault();
         document.getElementById('play').innerHTML = '<audio autoplay><src="resources/moo.wav" type="audio/wav"></audio>';
     }
-	
 };
 
 //window.onload = LoadProgram();
@@ -192,6 +193,48 @@ function displayListEN() {
 	document.getElementById("alphabet").innerHTML += '<input type="button" class="literken" style="width: 30px; height: 25.5px;" value="' + String.fromCharCode(65+i) + '" onClick="alercik(this.value)"/><br/>';
 }
 
+//wyświetl kategorie
+function loadCategories() {
+    var xmlhttp, xmlDoc;
+    xmlhttp = new XMLHttpRequest();	
+    xmlhttp.open("GET", "resources/sample.xml", false);
+    xmlhttp.send();
+    xmlDoc = xmlhttp.responseXML;
+	y = xmlDoc.getElementsByTagName("category")[0].childNodes;
+	for(i=1; i < y.length; i +=2) {
+		lista2 = "";
+		x = xmlDoc.getElementsByTagName("category")[0].childNodes[i].childNodes[0].nodeValue;
+		lista2 += "<li><a href='#' onClick='sortMyListByCat("+i+")' id='secondary'  style='font-size: 16px;'>";
+		//alert(i);
+		lista2 += x;
+		lista2 += "</a></li>";	
+		document.getElementById("listUL").innerHTML += lista2;
+	}
+}
+
+function sortMyListByCat(cat) { //wyświetla listę posortowaną wg kategorii
+	var xmlhttp, xmlDoc;
+    xmlhttp = new XMLHttpRequest();	
+    xmlhttp.open("GET", "resources/sample.xml", false);
+    xmlhttp.send();
+    xmlDoc = xmlhttp.responseXML;
+	c = xmlDoc.getElementsByTagName("category")[0].childNodes[cat].childNodes[0].nodeValue;
+
+	x = xmlDoc.getElementsByTagName("entry");
+    table = "<tr><th></th></tr>";
+    for (i = 0; i < x.length; i++) {
+		if(x[i].getElementsByTagName("category")[0].childNodes[0].nodeValue==c) {
+			table += "<tr onclick='displayCD(" + i + ")'><td>";
+			table += x[i].getElementsByTagName("id")[0].childNodes[0].nodeValue;
+			table += "</td><td>";
+		}
+    }
+    document.getElementById("demo").innerHTML = table;
+
+}
+
+
+
 //listy popedni następny
 function nextClick() {
     nextClick.called = true;
@@ -232,7 +275,13 @@ function displayCD(i) {
 	content = "<div id='wordMain'><p id='slowo'></p></div><div id='word'><p id='pfs'></p><p id='slowo2'></p></div><div id='definition'></div><div id='picture'><p id='def'></p></div><div id='related'><p id='sentence'></p><p id='sentence2'></p></div>";
 	
 	document.getElementById("window").innerHTML = content;
-		
+	
+	var xmlhttp, xmlDoc;
+    xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("post", 'resources/sample.xml', false);
+    xmlhttp.send();
+    xmlDoc = xmlhttp.responseXML;
+    x = xmlDoc.getElementsByTagName("entry");
     document.getElementById("slowo").innerHTML = //duży napis słowo w zależności od wybranego layoutu
         "Word: " +
         x[i].getElementsByTagName("id")[0].childNodes[0].nodeValue;
@@ -310,6 +359,8 @@ function sortMyList(type) {
     } while (trl > 1)
 }
 
+
+
 function changeNamePlates() {//funkcja testowa, sprawdzanie odebrania paczki językowej z MAIN
     ipcRenderer.on('lang', (event, arg) => {
         console.log(arg);
@@ -347,7 +398,3 @@ function homepage() { //wyświetl stronę główną, czyści historię odwiedzon
 		lista = [];
 		nextPrevButtons();
 }
-
-
-
-
