@@ -3,138 +3,310 @@ ol {
 	padding:0;
 	margin:0;
 	width:200px;
-	background-color:#FFFFFF;
-	font-size:17px;
+	background-color:rgb(172, 211, 226);
+	font-size:15px;
 	height:2em;
 	line-height:2em;
 	text-align:center;
-
+	border: none;
+	transition: all 0.35s ease 0s;
 }
-
 ol a {
 	display:block;
 	text-decoration:none;
 	color:#000000;
-	padding:0 5px;
+	padding:0 0px;
+	font-size:23px;
+	transition: all 0.2s ease 0s;
 }
-
   ol > li {
 	float:left;
 	width:200px;
-	background-color:#FFFFFF;
+	background: linear-gradient(to left, rgba(191, 198, 204, 0.87),rgba(134, 166, 202, 0.87),rgba(191, 198, 204, 0.87));
+	border-bottom: 1px solid black;
+	border-radius: 3px;
 	height:2em;
   }
-
   ol > li:first-child {
 	margin-left:0;
+	transition: all 0.2s ease 0s;
   }
-
-
   ol > li:hover {
-	background-color:#FFFFFF;
+	background-color:rgba(119, 159, 219, 0.795);
 	width:200px;
   }
-
   ol > li:hover > a {
 	color: #000000;
-	background-color: #aacfe2;
+	background-color:rgba(176, 185, 197, 0.795); 
   }
 
   ol > li:hover > ul {
 	display:block;
-	background-color: #b5ddf2;
   }
-
   ol > li > ul {
 	display:none;
 	list-style-type:none;
 	padding:0;
 	margin:0;
+	transition: all 0.2s ease 0s;
   }
-
   ol > li > ul > li {
 	position:relative;
-	background-color:#b5ddf2;
+	background-color:#7cb0cf;
+	width:200px;
   }
-
   ol > li > ul > li > a {
-	border-top:1px solid #FFF;
+	border-bottom-style: solid;
+	border-width: 1px;
+	border-color: #243946;
+	background-color: #7cb0cf;
+	width:200px;
+	transition: all 0.2s ease 0s;
   }
-
   ol > li > ul > li:hover {
-	background-color:#DDD;
+	background-color: #aabbc4;
+	width:200px;
   }
-
 
   ol > li > ul > li:hover > a {
 	color:#000000;
-	background-color: #aacfe2;
+	background-color: #6a7479;
+	transition: all 0.35s ease 0s;
 }
 #container{
 	width: 1090px;
 	height: 720px;
 	border-style: solid;
 	border-width: 1px;
+	background-color: #d9dddf;
 }
 #bar{
-	width: 1090px;
+	width: 1088px;
 	height: 50px;
+	background-color:#d9dddf;
+	background: linear-gradient(to right,  #d9dddf,#d9dddf,rgba(154, 195, 243, 0.87));
+	border: 1px solid black;
+	border-right: 2px solid black;
 }
 #list{
-	width: 138px;
-	height: 649px;
+	width: 145px;
+	height: 669px;
 	float: left;
+	overflow-x: hidden;
 	overflow-y: scroll;
 	border-style: solid;
 	border-width: 1px;
+	border-radius: 2px;
+	background-color: #dbdddf;
 }
 #window{
-	width: 872px;
+	width: 884px;
 	height: 649px;
 	float: left;
 	overflow-y: scroll;
+	border-style: double;
+	border-width: 1px;
+	border-radius: 2px;
+	padding: 10px;
+	background: linear-gradient(to right,  rgb(215, 229, 230),rgba(147, 189, 238, 0.87));
+}
+#wordMain{
+	width: 100%;
+	height: 180px;
+	font-size: 60px;
+	font-family: 'Times New Roman';
+	font-weight: 700;
 	border-style: solid;
 	border-width: 1px;
-	padding: 10px;
+	border-radius: 4px;
+	border-color: #000000;
+	background-color: #d6d5d5;
+	box-shadow: 5px 5px 5px grey;
+	background: linear-gradient(to right,  rgb(183, 191, 192),rgba(153, 198, 250, 0.87),rgba(109, 165, 230, 0.87));
 }
 #word{
-	width: 100%;
+	width: 50%;
 	height: 10%;
 	font-size: 50px;
+	color: #041a94e8;
 }
-#definition{
-	width: 50%;
-	font-size: 22px;
-	float: left;
+#def {
+	margin-left: 10px;
+	font-size: 24px;
+	font-family: Georgia;
 }
 #picture{
-	width: 50%;
-	height: 50%;
-	float: left;
+	width: 443px;
+	height: 335px;
+	float: right;
+	padding-top: 31px;
 }
 #related{
-	width: 100%;
-	height: 50%;
+	width: 444px;
+	padding-top: 200px; 
 	font-size: 18px;
 }
-#alphabet{
-	width: 30px;
-	float: left;
+#pfs {
+	margin-left: 10px;
+	font-style: italic;
+}
+#definition{
+	border: 1px;
+	border-color:black;
 	border-style: solid;
-	border-width: 1px;
-	padding: 2px;
+	width: 99%;
+}
+#alphabet{
+	width: 33px;
+	height: 667px;
+	float: left;
+	padding: 1px;
+	background-color: #6eadcf;
+	border: 1px solid black;
 }
 #myInput{
 	margin-left: 0px;
+	width: 126px;
+	height: 30px;
+	box-sizing: border-box;
+	padding-left: 25px; 
+    border: 1px solid rgb(185, 185, 185);
+    border-radius: 4px;  
+    background-color: rgb(228, 227, 227);
+    background-image: url('searchicon.png');
+	background-repeat: no-repeat;
+	box-shadow: 0px 0px 10px grey;
+}
+#myInput:hover { 
+	border-color: #645a5a;
+}
+a {
+	margin-left: 0px;
+	width: 128px;
+	text-align: center;
+}
+#slowo {
+	text-align: center;
+}
+#slowo2 {
+	font-size: 35px;
+	padding-top: 20px;
+	margin-left: 10px;
+	color: #101e25;
+}
+#sentence {
+	width: 443px;
+	margin-left: 10px;
+	font-style: italic;
+}
+#sentence2 {
+	width: 443px;
+	margin-left: 10px;
+	font-style: italic;
+}
+#synomym {
+	width: 443px;
+	margin-left: 10px;
+	color: rgba(0, 0, 0, 0.8);
+	filter: alpha(opacity=50);
+	border-bottom: 2px solid black;
+	border-radius: 1px;
+	
+}
+span:hover {
+	text-align: center;
+	cursor: pointer;
+	font-size: 20px;
+	transition: all 0.1s ease 0.1s;
+	
 }
 .przycisk{
-	background-color: #FFFFFF;
+	background-color: #d9dddf;
 	border: none;
 	position: absolute;
-	width: 75px;
+	width: 80px;
 	height: 50px;
+	color: #000000;
+	font-weight: 500;
+	border-radius: 4px;
+	transition: all 0.5s ease 0s;
 }
 .przycisk:hover
 {
-	background-color: #b5ddf2;
+	background-color: #7cb0cf;
+	font-size: 13px;
+}
+.literken {
+	width: 33px;
+	height: 25.5px;
+	margin-left: 1px;
+	border-radius: 2px;
+	border: 1px;
+	border-color: #7270d3;
+	border-style: solid none;
+	font-style: verdana;
+	font-weight: 600;
+	font-size: 12px;
+	background: linear-gradient(to right,  rgb(174, 181, 182),rgba(153, 198, 250, 0.87),rgba(137, 186, 243, 0.87));
+	transition: all 0.35s ease 0s;
+}
+.literken:hover {
+	background: linear-gradient(to right,  rgb(114, 112, 248),rgba(82, 163, 255, 0.87));
+	color: wheat;
+	font-size: 18px;
+	font-style: italic;
+}
+#demo {
+	text-align: left;
+	font-size: 20px;
+	font-family: verdana;
+	width:143px;
+}
+a {
+	font-family: verdana;
+	font-size: 14px;
+	cursor: pointer;
+}
+td {
+	min-width: 140px;
+    border-bottom: solid 1px #000;
+	border-radius: 3px;
+	width: 143px;
+	font-size: 15px;
+	transition: all 0.3s ease 0s;
+}
+td:hover {
+	font-size: 17px;
+	padding-left: 9px;
+	box-shadow: 1px 5px 10px rgb(117, 116, 116);
+}
+tr {
+	cursor: pointer;
+	width:143px;
+}
+tr:hover td {
+	background-color: #7cb0cf;
+}
+#pressed {
+	width: 130px;
+	text-align: center;
+}
+#primary {
+	width: 130px;
+	text-align: center;
+}
+#secondary {
+	width: 130px;
+	text-align: center;
+}
+#description {
+	border-style: double;
+	border-width: 1px;
+	border-radius: 1px;
+	padding: 10px;
+	height: 503px;
+	width: 745px;
+	background: linear-gradient(to right,  rgb(215, 229, 230),rgba(147, 189, 238, 0.87));
+	font-family: verdana;
+	font-size:14px;
 }

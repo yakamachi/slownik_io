@@ -283,13 +283,10 @@ function displayCD(i) {
     xmlDoc = xmlhttp.responseXML;
     x = xmlDoc.getElementsByTagName("entry");
     document.getElementById("slowo").innerHTML = //duży napis słowo w zależności od wybranego layoutu
-        "Word: " +
         x[i].getElementsByTagName("id")[0].childNodes[0].nodeValue;
     document.getElementById("pfs").innerHTML = //pfs - cześć mowy
-        "Pfs: " +
         x[i].getElementsByTagName("pfs")[0].childNodes[0].nodeValue;
     document.getElementById("slowo2").innerHTML = //tłumaczenie słowa
-        "*: " +
         x[i].getElementsByTagName("word")[0].childNodes[0].nodeValue;
     relative = x[i].getElementsByTagName("synomym")[0].childNodes[0].nodeValue; //synonim, literówka
     if (!nextClick.called && !prevClick.called) { //kontrola przycików poprzednie, następne hasło
@@ -313,13 +310,10 @@ function displayCD(i) {
         "<p id='sentence'></p><p id='sentence2'></p>" +
         "<p> <span id='synomym' onclick='displayCD(" + findRelative(relative) + ")'>" + relative + "</span></p>"
     document.getElementById("def").innerHTML =
-        "Def: " +
         x[i].getElementsByTagName("def")[0].childNodes[0].nodeValue;
     document.getElementById("sentence").innerHTML =
-        "Sentence: " +
         x[i].getElementsByTagName("sentence")[1].childNodes[0].nodeValue;
     document.getElementById("sentence2").innerHTML =
-        "Sentence: " +
         x[i].getElementsByTagName("sentence")[0].childNodes[0].nodeValue;
 
     console.log("i=" + i);
